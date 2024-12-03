@@ -1,0 +1,75 @@
+@use "../../styles/_mixin" as mixin;
+@use "../../styles/_colors" as colors;
+
+.nav {
+  &-main {
+    display: flex;
+    gap: 56px;
+    transition: all 350ms;
+
+    li {
+      position: relative;
+      padding-block: 0;
+    }
+
+    .plants-nav {
+      flex-direction: column;
+      flex: none;
+      position: absolute;
+      left: 0;
+      background-color: white;
+      position: absolute;
+      left: 50%;
+      top: 30px;
+      transform: translateX(-50%);
+      width: 150px;
+      border-radius: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 350ms;
+      padding: 10px;
+      a {
+        font-size: 14px;
+
+        &:hover {
+          color: rgba($color: #343434, $alpha: 0.7);
+        }
+      }
+      &.active {
+        top: 50px;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  @include mixin.mq("mobile") {
+    &-main {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &-main.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &-main {
+      flex-direction: column;
+      position: absolute;
+      background-color: colors.$white;
+      left: 0;
+      right: 0;
+      font-size: 14px;
+      height: 48%;
+      gap: 0;
+      top: 127px;
+      text-align: left;
+      padding-inline: 15px;
+    }
+
+    .plants-nav.active {
+      z-index: 1;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+@use "../../styles/_mixin" as mixin;
+@use "../../styles/_colors" as color;
+
+.sale {
+  &-wrapper {
+    @include mixin.grid(repeat(4, 1fr));
+  }
+
+  &-title {
+    @include mixin.title;
+  }
+
+  &-items {
+    background-color: color.$white;
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  &-btn {
+    @include mixin.button;
+  }
+
+  &-body {
+    h4 {
+      font-size: 20px;
+      font-weight: 700;
+      color: color.$secondary;
+    }
+  }
+  p {
+    font-size: 20px;
+    color: color.$secondary;
+  }
+  &-new {
+    text-decoration: line-through;
+    color: #d11f1f;
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 16px;
+  }
+
+  &-img {
+    position: relative;
+  }
+
+  &-top {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+  }
+
+  .discount {
+    position: absolute;
+    top: 15px;
+    left: 13px;
+    color: color.$white;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  @include mixin.mq("mobile") {
+    &-wrapper {
+      grid-template-columns: 1fr;
+    }
+    &-img {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  @include mixin.mq("tablet"){
+    &-wrapper{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    &-items{
+        img{
+            width: 100%;
+        }
+    }
+  }
+
+  @include mixin.mq("desktop2"){
+    &-wrapper{
+        grid-template-columns: repeat(4,1fr);
+    }
+
+    &-items{
+        img{
+            width: 100%;
+        }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+@use "../../styles/_mixin" as mixin;
+
+.plants {
+  background-color: #f0f5f0;
+
+  @include mixin.mq("mobile"){
+    &-wrapper{
+        flex-direction: column
+    }
+  }
+
+  @include mixin.mq("tablet"){
+    &-wrapper{
+        flex-wrap: wrap
+    }
+
+    &-item{
+        width: 50%;
+
+        img{
+            display: inline-block
+        }
+    }
+  }
+
+   @include mixin.mq("desktop2"){
+    &-wrapper{
+        flex-wrap: nowrap
+    }
+
+  
+  }
+}
+
+.plants-wrapper {
+  @include mixin.flex-x-y;
+  text-align: center;
+
+  p {
+    font-weight: 600;
+  }
+}
+
+.plants-btn {
+  @include mixin.flex-y;
+  margin-left: auto;
+  color: #3b823e;
+  margin-bottom: 20px;
+  margin-top: 32px;
+  cursor: pointer;
+  span {
+    text-decoration: underline;
+    a {
+      color: inherit;
+    }
+  }
+  img {
+    margin-left: 12px;
+  }
+}

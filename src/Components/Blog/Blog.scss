@@ -1,0 +1,75 @@
+@use "../../styles/_mixin" as mixin;
+@use "../../styles/_colors" as color;
+
+.blog {
+  &-title {
+    @include mixin.title;
+  }
+
+  &-wrapper {
+    @include mixin.grid(repeat(2, 1fr));
+  }
+
+  &-items {
+    position: relative;
+  }
+
+  &-inside {
+    min-width: 460px;
+    margin-inline: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    text-align: center;
+    color: color.$white;
+  }
+
+  &-btn {
+    @include mixin.button;
+    font-size: 20px;
+  }
+
+  @include mixin.mq("mobile"){
+    &-wrapper{
+        grid-template-columns: 1fr;
+    }
+
+    &-items{
+        img{
+            width: 100%;
+        }
+    }
+
+    &-inside{
+        font-size: 21px;
+        min-width: auto;
+        width: 100%;
+    }
+
+
+    button{
+        max-width: 250px;
+        margin-bottom: 20px;
+        padding-block: 15px;
+    }
+
+  }
+
+  @include mixin.mq("tablet"){
+    &-items{
+        button{
+            width: 80%;
+        }
+    }
+  }
+
+  @include mixin.mq("desktop2"){
+    &-items{
+        button{
+            width: 100%;
+        }
+    }
+  }
+}

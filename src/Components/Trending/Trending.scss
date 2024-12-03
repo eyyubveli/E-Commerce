@@ -1,0 +1,67 @@
+@use "../../styles/_mixin" as mixin;
+@use "../../styles/_colors" as color;
+
+.trending {
+  &-wrapper {
+    @include mixin.grid;
+  }
+
+  &-items {
+    background-color: color.$white;
+    padding: 20px;
+    border-radius: 16px;
+    color: color.$secondary;
+    cursor: pointer;
+  }
+
+  h4 {
+    font-size: 20px;
+    margin-block: 16px 4px;
+  }
+
+  p{
+    font-size: 20px
+  }
+
+  &-title {
+    @include mixin.title;
+  }
+
+  &-btn {
+    @include mixin.button;
+  }
+  @include mixin.mq("mobile"){
+    &-wrapper{
+        grid-template-columns: 1fr;
+    }
+
+    &-items{
+        img{
+            width: 100%;
+        }
+    }
+
+  }
+
+  @include mixin.mq("tablet"){
+    &-wrapper{
+        grid-template-columns: repeat(2,1fr);
+    }
+    &-items{
+        img{
+            width: 100%;
+        }
+    }
+  }
+
+  @include mixin.mq("desktop2"){
+    &-wrapper{
+        grid-template-columns: repeat(4,1fr);
+    }
+    &-items{
+        img{
+            width: 100%;
+        }
+    }
+  }
+}

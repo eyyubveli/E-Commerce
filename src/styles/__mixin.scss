@@ -1,0 +1,112 @@
+@use "./_colors" as color;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-y {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-x-y {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin grid($columns: repeat(4, 1fr), $gap: 24px) {
+  display: grid;
+  grid-template-columns: $columns;
+  gap: $gap;
+}
+
+@mixin button($padding-block: 19px) {
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 600;
+  color: color.$white;
+  font-family: "Open Sans", serif;
+  width: 100%;
+  background-color: color.$main;
+  padding-block: $padding-block;
+}
+
+@mixin title {
+  text-align: center;
+  font-family: "Unna", serif;
+  font-size: clamp(36px, 5vw, 48px);
+
+  color: color.$secondary;
+  margin-bottom: 43px;
+  position: relative;
+
+  &::before {
+    content: "";
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    width: 200px;
+    height: 2px;
+    background-color: rgba($color: color.$secondary, $alpha: 0.8);
+  }
+}
+
+@mixin quantity {
+  border: 2px solid color.$secondary;
+  width: 86px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
+  button,
+  span {
+    flex: 1;
+    height: inherit;
+    line-height: 36px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+
+@mixin mq ($width: "mobile") {
+    @if($width == "mobile"){
+        @media (max-width: 767px) {
+            @content;
+         }
+    }
+    
+
+    @else if($width == "tablet"){
+        @media (min-width: 768px) { 
+            @content;
+         }
+    }
+
+
+    @else  if($width == "desktop"){
+        @media (max-width: 992px) {  
+            @content;
+        }
+    }
+
+    @else if($width== "desktop2"){
+        @media (min-width:992px){
+            @content;
+        }
+    }
+
+    @else if($width == "lgdesktop"){
+        @media (min-width: 1200px) { 
+            @content;
+         }
+    }
+}

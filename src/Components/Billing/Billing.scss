@@ -1,0 +1,116 @@
+@use "../../styles/_mixin" as mixin;
+@use "../../styles/_colors" as color;
+
+.billing {
+  color: color.$secondary;
+  font-weight: 600;
+  h4 {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  .form {
+    &-wrapper {
+      display: flex;
+    }
+
+    &-left,
+    &-right {
+      max-width: 516px;
+
+      input:not([type="checkbox"]),
+      select {
+        width: 100%;
+        padding-block: 11px;
+        border-radius: 4px;
+        min-width: 250px;
+        padding-left: 16px;
+        height: 48px;
+        border: 1px solid color.$secondary;
+      }
+    }
+
+    &-right {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      .form-item:nth-child(2) {
+        flex-direction: column;
+      }
+    }
+
+    &-left,
+    &-right {
+      flex: 1;
+    }
+
+    &-item {
+      display: flex;
+      margin-bottom: 32px;
+      gap: 16px;
+    }
+
+    &-item:nth-child(3) {
+      display: inline-block;
+      width: 100%;
+      div {
+        margin-bottom: 8px;
+      }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    &-check {
+      display: flex;
+      gap: 8px;
+      margin-top: 40px;
+      label[for="payment"] {
+        display: flex;
+        gap: 4px;
+      }
+    }
+
+    input[type="checkbox"] {
+      transition: all 350ms;
+      appearance: none;
+      -webkit-appearance: none;
+      align-self: flex-start;
+      min-width: 24px;
+      min-height: 24px;
+      border: 1px solid color.$secondary;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &:checked {
+        &::after {
+          content: "✔";
+        }
+      }
+    }
+
+    button[type="submit"] {
+      @include mixin.button;
+      margin-top: auto;
+      margin-left: auto;
+      margin-bottom: 24px;
+      max-width: 271px;
+    }
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+}

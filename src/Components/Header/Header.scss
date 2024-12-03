@@ -1,0 +1,297 @@
+@use "../../styles/_mixin" as mixin;
+@use "../../styles/_colors" as colors;
+
+.header {
+  .header-wrapper {
+    background-color: colors.$header-top;
+
+    .header-top {
+      @include mixin.flex-y;
+      color: colors.$white;
+    }
+
+    .header-center {
+      flex: 1;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+
+      img {
+        cursor: pointer;
+        transition: all 500ms;
+        &:nth-child(1) {
+          margin-right: 56px;
+        }
+      }
+    }
+  }
+
+  .header-bottom {
+    @include mixin.flex-x-y;
+    margin-top: 15px;
+
+    .nav {
+      @include mixin.flex-y;
+      gap: 56px;
+
+      a {
+        color: colors.$secondary;
+        padding-block: 15px;
+        font-weight: 600;
+        @include mixin.flex-center;
+        cursor: pointer;
+      }
+    }
+
+    .input-container {
+      position: relative;
+
+      input {
+        border: 1px solid colors.$secondary;
+        border-radius: 6px;
+        padding-block: 9px;
+        padding-left: 48px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        color: rgba(#343434, 0.5);
+      }
+
+      img[title="Search"] {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        padding-left: 12px;
+      }
+    }
+  }
+
+  .logo {
+    cursor: pointer;
+  }
+
+  .basket {
+    transform: translateX(300px);
+    transition: all 250ms;
+    width: 300px;
+    min-height: 100vh;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: colors.$white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .basket.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    z-index: 10000;
+  }
+
+  .item {
+    position: absolute;
+    right: 15px;
+    top: 30px;
+    transition: all 250ms;
+  }
+
+  .products-container {
+    overflow-y: auto;
+    height: 600px;
+    margin-top: 90px;
+    color: colors.$secondary;
+    display: flex;
+    flex-direction: column;
+
+    .product-body {
+      display: flex;
+    }
+    .product-item {
+      display: flex;
+      flex-direction: column;
+      padding: 6px;
+      margin-bottom: 20px;
+      svg {
+        margin-left: auto;
+      }
+      h4 {
+        font-size: 14px;
+      }
+
+      .product-top {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+      }
+
+      .product-top-align {
+        display: flex;
+      }
+    }
+
+    span {
+      font-size: 14px;
+    }
+
+    h4 {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    .btns {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      button {
+        padding: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .quantity {
+    margin-bottom: 30px;
+    margin-top: auto;
+    text-align: center;
+    padding-inline: 20px;
+
+    &-wrapper {
+      justify-content: space-between;
+      display: flex;
+      margin-bottom: 20px;
+    }
+  }
+
+  .empty {
+    text-align: center;
+    margin-top: auto;
+    font-weight: 600;
+  }
+
+  .view-cart {
+    margin-bottom: 20px;
+    @include mixin.button(15px);
+    margin-inline: auto;
+    max-width: 280px;
+    background-color: transparent;
+    color: colors.$secondary;
+    border: 1px solid colors.$main;
+    transition: all 250ms;
+    &:hover {
+      background-color: colors.$main;
+      color: colors.$white;
+    }
+  }
+
+  &-basket {
+    position: relative;
+    span {
+      position: absolute;
+      top: -4px;
+      right: 56px;
+      background-color: colors.$main;
+      cursor: pointer;
+      min-width: 15px;
+      text-align: center;
+      font-size: 13px;
+      //   padding: 1px;
+      border-radius: 50%;
+    }
+  }
+
+  .burger {
+    display: none;
+  }
+
+  @include mixin.mq("mobile") {
+    .container {
+      padding-inline: 15px;
+    }
+    .burger {
+      display: block;
+      cursor: pointer;
+    }
+    .input-container {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute !important;
+      top: 405px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &-center {
+      font-size: 14px !important;
+    }
+
+    .products-container {
+      height: 100vh;
+
+      .product-item:first-child{
+        margin-top: 100px;
+      }
+    }
+
+    .item{
+        top: 120px;
+    }
+    
+
+    &-basket {
+      img {
+        margin-right: 15px !important;
+        margin-left: 10px;
+      }
+
+      span{
+        right: 14px;
+      }
+    }
+  }
+}
+
+.matching {
+  position: absolute;
+  width: 100%;
+  height: 350px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: colors.$white;
+  overflow-y: auto;
+  padding: 10px;
+  .items {
+    @include mixin.flex-y;
+    gap: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+body:has(.basket.active) .overlay {
+  display: block;
+}

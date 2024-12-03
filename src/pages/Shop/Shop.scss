@@ -1,0 +1,213 @@
+@use "../../styles/_mixin" as mixin;
+@use "../../styles/_colors" as color;
+
+.shop {
+  &-categories {
+    max-width: 250px;
+    padding-block: 18px;
+    padding-inline: 26px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    background: #f0f5f0;
+    border: 1px solid #e3e5e6;
+    box-shadow: 0px 8px 23px rgba(80, 107, 82, 0.13);
+    border-radius: 10px;
+  }
+
+  &-left {
+    min-width: 250px;
+  }
+
+  &-price {
+    padding-inline: 24px;
+    margin-top: 19px;
+    border-radius: 10px;
+    color: color.$secondary;
+    font-weight: 500;
+    font-size: 20px;
+    background: #f0f5f0;
+    border: 1px solid #e3e5e6;
+    box-shadow: 0px 8px 23px rgba(80, 107, 82, 0.13);
+    border-radius: 10px;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+  }
+
+  h4 {
+    font-weight: 500;
+  }
+
+  .MuiBox-root {
+    display: none;
+  }
+  .MuiBox-root.active {
+    display: block;
+  }
+
+  &-include {
+    padding-inline: 24px;
+    margin-top: 19px;
+    border-radius: 10px;
+    color: color.$secondary;
+    font-weight: 500;
+    font-size: 20px;
+    background: #f0f5f0;
+    border: 1px solid #e3e5e6;
+    box-shadow: 0px 8px 23px rgba(80, 107, 82, 0.13);
+    border-radius: 10px;
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      background-color: white;
+      border-radius: 10px;
+      vertical-align: middle;
+      border: 1px solid color.$secondary;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      cursor: pointer;
+
+      &:checked {
+        background-color: gray;
+      }
+    }
+  }
+  &-check-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 87px;
+    color: color.$secondary;
+  }
+  &-right {
+    &-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    &-items {
+      padding: 20px;
+      background-color: color.$white;
+      border-radius: 16px;
+      cursor: pointer;
+    }
+
+    h4 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    a {
+      text-align: center;
+      display: block;
+      margin-block: 29px 58px;
+      text-decoration: underline;
+    }
+  }
+
+  @include mixin.mq("mobile") {
+    &-wrapper {
+      flex-direction: column;
+    }
+
+    &-categories {
+      max-width: 100%;
+    }
+
+ 
+    .MuiBox-root.active {
+      width: 100%;
+    }
+
+    &-right {
+        margin-top: 30px;
+      &-wrapper {
+        grid-template-columns: 1fr;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @include mixin.mq("tablet"){
+    &-right{
+        &-wrapper{
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+  }
+
+  @include mixin.mq("desktop2"){
+    &-right{
+        &-wrapper{
+            grid-template-columns: repeat(3,1fr);
+        }
+    }
+  }
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  gap: 8px;
+  list-style: none;
+  color: color.$secondary;
+  font-family: "Open Sans", serif;
+}
+
+a {
+  color: color.$secondary;
+}
+
+details[open] > summary > img {
+  transform: rotate(90deg);
+}
+
+summary {
+  margin-bottom: 23px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  padding-block: 15px;
+}
+#all-categories > summary {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+#all-categories[open] > summary {
+  margin-bottom: 20px;
+}
+summary {
+  font-size: 16px;
+}
+
+details:not(details:nth-child(1)) {
+  padding-left: 20px;
+}

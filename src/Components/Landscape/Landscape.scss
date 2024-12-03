@@ -1,0 +1,51 @@
+@use "../../styles/_mixin" as mixin;
+@use "../../styles/_colors" as color;
+
+.landscape {
+  &-wrapper {
+    @include mixin.grid(repeat(2, 1fr));
+  }
+
+  &-title {
+    @include mixin.title;
+  }
+
+  p {
+    font-size: 24px;
+    color: color.$secondary;
+    max-width: 540px;
+  }
+  i {
+    color: #d11f1f;
+    margin-bottom: 28px;
+    display: inline-block;
+  }
+
+  &-btn {
+    @include mixin.button;
+    max-width: 282px;
+  }
+
+  @include mixin.mq("mobile") {
+    &-title {
+      text-align: left;
+      &:before {
+        left: 30%;
+      }
+    }
+
+    p{
+        font-size: 19px;
+    }
+
+    &-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    &-img {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

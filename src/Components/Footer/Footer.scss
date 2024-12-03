@@ -1,0 +1,124 @@
+@use "../../styles/_mixin" as mixin;
+@use "../../styles/_colors" as color;
+.footer {
+  background-color: color.$footer;
+  color: color.$white;
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    margin-right: 65px;
+  }
+
+  &-box {
+    &-title {
+      color: color.$white;
+    }
+  }
+
+  &-content {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+    a {
+      color: color.$white;
+    }
+  }
+
+  &-left {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &-nav {
+    display: flex;
+    gap: 40px;
+  }
+
+  span {
+    color: color.$white;
+  }
+
+  &-right {
+    display: flex;
+  }
+
+  &-flex {
+    margin-left: 30px;
+  }
+
+  &-links {
+    display: flex;
+    margin-top: 48px;
+    gap: 16px;
+  }
+
+  .container {
+    padding: 40px;
+  }
+
+  &-bottom {
+    display: flex;
+    justify-content: center;
+    background-color: color.$header-top;
+    gap: 50px;
+
+    h5 {
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+  }
+
+  @include mixin.mq("mobile") {
+    &-wrapper {
+      flex-direction: column;
+    }
+
+    &-left {
+      flex-direction: column;
+    }
+    &-right {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-logo {
+      width: 150px;
+    }
+
+    &-flex{
+        margin-left: 0;
+        text-align: center;
+    }
+
+    &-nav {
+      row-gap: 20px;
+      margin-block: 20px;
+      flex-wrap: wrap;
+      .footer-box {
+        width: calc(50% - 20px);
+      }
+    }
+
+    img[title="Company Badge"] {
+      width: 120px;
+    }
+
+    &-bottom{
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        div{
+            justify-content: center;
+        }
+    }
+  }
+}
