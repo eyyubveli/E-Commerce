@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import HeaderBanner from "../../img/Banner.jpg";
 import ShopBanner from "../../img/shopbanner.jpg";
+
 const Hero = () => {
     const location = useLocation();
 
     const backgroundImage =
         location.pathname === "/" ? HeaderBanner : location.pathname === "/shop" ? ShopBanner : "";
+
+    useEffect(() => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = backgroundImage;
+        link.as = 'image';
+        document.head.appendChild(link);
+    }, [backgroundImage]);
+
     return (
         <div
             className="hero"
@@ -20,7 +30,6 @@ const Hero = () => {
                 display: location.pathname === '/' || location.pathname === '/shop' ? 'block' : 'none'
             }}
         >
-
         </div>
     );
 };
