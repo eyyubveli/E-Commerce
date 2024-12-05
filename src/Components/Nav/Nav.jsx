@@ -9,7 +9,7 @@ const Nav = ({ active }) => {
 
     const toggleMenu = (menuName) => {
         setActiveMenu((prevMenu) => (prevMenu === menuName ? null : menuName));
-    };
+    }
 
     return (
         <nav className="nav">
