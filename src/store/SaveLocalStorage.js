@@ -5,8 +5,8 @@ export const getProductFromLocalStorage = () => {
 };
 
 
-export const saveToLocalStorage = (product) =>{
-    localStorage.setItem('products', JSON.stringify(product)); 
- }
- 
+export const saveToLocalStorage = (product) => {
+    localStorage.setItem('products', JSON.stringify(product));
+}
+
 

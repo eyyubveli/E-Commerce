@@ -1,15 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { IoCloseOutline } from "react-icons/io5";
-import { removeProduct, incrementQuantity, decrementQuantity, selectTotalPrice, selectTotalItemCount } from "../../store/ProductSlice";
+import { removeProduct, incrementQuantity, decrementQuantity, selectTotalPrice, selectTotalItemCount, clearProductList } from "../../store/ProductSlice";
 import { Link } from 'react-router-dom';
-
+import { useAuth } from '../../Hooks/useAuth';
 
 const Products = () => {
     const product = useSelector(state => state.products.product);
     const dispatch = useDispatch();
     const totalQuantity = useSelector(selectTotalPrice);
     const totalItemCount = useSelector(selectTotalItemCount);
+    const { user } = useAuth();
+
+
+    useEffect(() => {
+        if (!user) {
+            dispatch(clearProductList());
+        }
+    }, [user, dispatch]);
+
+
 
     return (
         <div className='products-container'>

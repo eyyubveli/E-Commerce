@@ -3,12 +3,15 @@ import './Cart.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrementQuantity, incrementQuantity, removeProduct, selectProductTotalPrices, selectTotalPrice } from '../../store/ProductSlice';
 import Billing from '../../Components/Billing/Billing';
+import { useAuth } from '../../Hooks/useAuth';
 
 const Cart = () => {
     const allProducts = useSelector(state => state.products.product);
     const dispatch = useDispatch();
     const totalQuantity = useSelector(selectTotalPrice);
     const productTotalPrices = useSelector(selectProductTotalPrices);
+   
+    
 
     return (
         <section className="cart">

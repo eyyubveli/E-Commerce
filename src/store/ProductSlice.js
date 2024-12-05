@@ -21,9 +21,9 @@ export const productSlice = createSlice({
                     toast.error("You can't add more than 10");
                     return;
                 }
-                existingProduct.quantity += quantity; 
+                existingProduct.quantity += quantity;
             } else {
-                state.product.push({ ...action.payload, quantity: quantity || 1 }); 
+                state.product.push({ ...action.payload, quantity: quantity || 1 });
             }
 
             toast.success('Product added to basket');
@@ -62,6 +62,10 @@ export const productSlice = createSlice({
             state.inputValue = action.payload;
         },
 
+        clearProductList: (state) => {
+            state.product = [];
+            saveToLocalStorage(state.product); 
+        },
     },
 
 });
@@ -93,6 +97,6 @@ export const selectProductTotalPrices = createSelector(
 );
 
 
-export const { addProduct, removeProduct, incrementQuantity, decrementQuantity, getInputValue, selectedData, detailsDecrementQuantity, detailsIncrementQuantity } = productSlice.actions;
+export const { addProduct, removeProduct, incrementQuantity, decrementQuantity, getInputValue, selectedData, detailsDecrementQuantity, detailsIncrementQuantity, clearProductList } = productSlice.actions;
 
 export default productSlice.reducer;
