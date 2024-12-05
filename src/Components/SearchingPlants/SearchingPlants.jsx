@@ -11,7 +11,7 @@ const SearchingPlants = () => {
 
     const matchingItems = allItems.filter(item => item.title.toLowerCase().includes(inputValue.toLowerCase()));
 
-    const handleClick = (id) => {        
+    const handleClick = (id) => {
         if (id) {
             navigate(`/product-details/${id}`);
         }

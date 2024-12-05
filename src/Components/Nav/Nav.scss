@@ -28,6 +28,7 @@
       visibility: hidden;
       transition: all 350ms;
       padding: 10px;
+
       a {
         font-size: 14px;
 
@@ -49,11 +50,6 @@
       opacity: 0;
     }
 
-    &-main.active {
-      visibility: visible;
-      opacity: 1;
-    }
-
     &-main {
       flex-direction: column;
       position: absolute;
@@ -67,9 +63,15 @@
       text-align: left;
       padding-inline: 15px;
     }
+    &-main.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    
 
     .plants-nav.active {
-      z-index: 1;
+      z-index: 11111;
     }
   }
 }

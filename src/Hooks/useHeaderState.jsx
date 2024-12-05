@@ -41,7 +41,8 @@ const useHeaderState = () => {
         toggleMode,
         toggleBasket,
         handleChange,
-        showMenu
+        showMenu,
+        setMenu
     }
 }
 

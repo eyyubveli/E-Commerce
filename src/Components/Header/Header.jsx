@@ -28,6 +28,7 @@ const Header = () => {
         toggleBasket,
         handleChange,
         showMenu,
+        setMenu
     } = useHeaderState();
 
     return (
@@ -62,7 +63,7 @@ const Header = () => {
                     <Link to="/">
                         <img className='logo' src={Logo} alt="Logo" title='Logo' />
                     </Link>
-                    <Nav active={menu && 'active'} />
+                    <Nav active={menu && 'active'} setMenu={setMenu} />
                     <CiMenuFries size={25} className='burger' onClick={showMenu} />
                     <div className={`input-container ${menu ? 'active' : ''}`}>
                         <input value={value} onChange={handleChange} type="text" placeholder='Search' />

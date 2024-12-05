@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Arrow from "../../img/arrow.svg";
 import "./Nav.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const Nav = ({ active }) => {
+
+const Nav = ({ active, setMenu }) => {
 
     const [activeMenu, setActiveMenu] = useState(null);
-
+    const location = useLocation();
     const toggleMenu = (menuName) => {
+
         setActiveMenu((prevMenu) => (prevMenu === menuName ? null : menuName));
     }
+
+    useEffect(() => {
+        setMenu(false);
+        setActiveMenu(null);
+        
+    }, [location]);
+
+    
+    
 
     return (
         <nav className="nav">
@@ -81,6 +92,7 @@ const Nav = ({ active }) => {
             </ul>
         </nav>
     );
+
 };
 
 export default Nav;
