@@ -9,11 +9,8 @@ const Selling = () => {
     const navigate = useNavigate();
     const currentUser = useSelector((state) => state.login.user);
     const getShop = () => {
-        if (currentUser) {
-            navigate("/shop");
-            return;
-        }
-        toast.error('First log in or sign up')
+        window.scrollTo(0, 0);
+        navigate("/shop");
     }
     return (
         <section className='selling container'>

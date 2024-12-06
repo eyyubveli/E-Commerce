@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { addProduct } from '../../store/ProductSlice';
 import { useAuth } from '../../Hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Shop = () => {
     const [value, setValue] = useState([0, 380]);
@@ -142,11 +143,11 @@ const Shop = () => {
                                         <button
                                             onClick={(e) => {
                                                 e.stopPropagation();
-                                                if (currentUser) {
-                                                    dispatch(addProduct(item));
-                                                } else {
-                                                    toast.error("Log in or sign up");
+                                                if (!currentUser.user) {
+                                                   return toast.error("Log in or sign up");
                                                 }
+
+                                                dispatch(addProduct(item));
                                             }}
                                             className="trending-btn"
                                             type="button"

@@ -1,12 +1,15 @@
 import React from 'react'
 import { plantersItems, saleItems, trendingItems } from '../../items/items'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import { clearInputValue } from '../../store/ProductSlice';
 
-const SearchingPlants = () => {
-    const inputValue = useSelector(state => state.products.inputValue);
+const SearchingPlants = ({setValue}) => {
+    let inputValue = useSelector(state => state.products.inputValue);
     const allItems = [...plantersItems, ...saleItems, ...trendingItems];
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     if (!inputValue) return;
 
     const matchingItems = allItems.filter(item => item.title.toLowerCase().includes(inputValue.toLowerCase()));
@@ -14,8 +17,12 @@ const SearchingPlants = () => {
     const handleClick = (id) => {
         if (id) {
             navigate(`/product-details/${id}`);
+            dispatch(clearInputValue())
+            setValue("");
+
         }
     }
+
 
     return (
         <div className="matching">

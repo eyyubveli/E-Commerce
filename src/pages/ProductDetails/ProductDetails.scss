@@ -175,7 +175,6 @@
       }
     }
 
-    
     .swiper-wrapper {
       gap: 5px;
     }
@@ -249,18 +248,18 @@
 
   @include mixin.mq("mobile") {
     padding-inline: 0;
-    &-btn{
-        flex-direction: column;
+    &-btn {
+      flex-direction: column;
     }
 
-    &-content{
-        overflow-y: scroll;
-        h4{
-            margin-bottom: 5px;
-        }
-        p{
-            font-size: 17px;
-        }
+    &-content {
+      overflow-y: scroll;
+      h4 {
+        margin-bottom: 5px;
+      }
+      p {
+        font-size: 17px;
+      }
     }
   }
 }

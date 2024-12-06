@@ -2,6 +2,17 @@
 @use "../../styles/_colors" as colors;
 
 .nav {
+  @include mixin.flex-y;
+  gap: 56px;
+
+  a {
+    color: colors.$secondary;
+    padding-block: 15px;
+    font-weight: 600;
+    @include mixin.flex-center;
+    cursor: pointer;
+  }
+
   &-main {
     display: flex;
     gap: 56px;
@@ -28,6 +39,7 @@
       visibility: hidden;
       transition: all 350ms;
       padding: 10px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
       a {
         font-size: 14px;
@@ -48,6 +60,11 @@
     &-main {
       visibility: hidden;
       opacity: 0;
+      align-items: center;
+    }
+
+    .plants-nav{
+        left: 21%;
     }
 
     &-main {
@@ -57,21 +74,34 @@
       left: 0;
       right: 0;
       font-size: 14px;
-      height: 48%;
+      padding-bottom: 15px;
       gap: 0;
       top: 127px;
       text-align: left;
       padding-inline: 15px;
+      z-index: 100;
+      transform: translateX(-100%);
+
+      li {
+        width: 100%;
+      }
     }
     &-main.active {
       visibility: visible;
       opacity: 1;
-    }
+      transform: translateX(0%);
 
-    
+    }
 
     .plants-nav.active {
       z-index: 11111;
+    }
+    a {
+      justify-content: start;
+    }
+
+    .input-container{
+        width: 100%;
     }
   }
 }

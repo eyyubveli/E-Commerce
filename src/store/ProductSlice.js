@@ -61,7 +61,9 @@ export const productSlice = createSlice({
         getInputValue: (state, action) => {
             state.inputValue = action.payload;
         },
-
+        clearInputValue: (state) => {
+            state.inputValue = '';
+        },
         clearProductList: (state) => {
             state.product = [];
             saveToLocalStorage(state.product); 
@@ -97,6 +99,6 @@ export const selectProductTotalPrices = createSelector(
 );
 
 
-export const { addProduct, removeProduct, incrementQuantity, decrementQuantity, getInputValue, selectedData, detailsDecrementQuantity, detailsIncrementQuantity, clearProductList } = productSlice.actions;
+export const { addProduct, removeProduct, incrementQuantity, decrementQuantity, getInputValue, selectedData, detailsDecrementQuantity, detailsIncrementQuantity, clearProductList, clearInputValue } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -21,6 +21,7 @@ const Header = () => {
         setActive,
         totalItemCount,
         value,
+        setValue,
         menu,
         handleOpen,
         handleClose,
@@ -65,12 +66,7 @@ const Header = () => {
                     </Link>
                     <Nav active={menu && 'active'} setMenu={setMenu} />
                     <CiMenuFries size={25} className='burger' onClick={showMenu} />
-                    <div className={`input-container ${menu ? 'active' : ''}`}>
-                        <input value={value} onChange={handleChange} type="text" placeholder='Search' />
-                        <img src={Search} alt="Search" title='Search' />
 
-                        <SearchingPlants />
-                    </div>
                 </div>
                 <Hero />
             </header>

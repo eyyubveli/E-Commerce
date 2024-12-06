@@ -14,11 +14,16 @@ import './ProductDetails.scss';
 import useQuantity from '../../Hooks/useQuantity';
 import Arrow from "../../img/arrowicon.png";
 import Sale from "../../Components/Sale/Sale";
+import { useAuth } from '../../Hooks/useAuth';
 const ProductDetails = () => {
     const { id } = useParams();
     const allItems = [...plantersItems, ...saleItems, ...trendingItems];
     const product = allItems.find((item) => item.id == id);
     const navigate = useNavigate();
+  
+
+    
+
     useEffect(() => {
         if (!product) {
             navigate('/404');
@@ -26,7 +31,7 @@ const ProductDetails = () => {
     }, [product, navigate]);
 
     if (!product) {
-        return null; 
+        return null;
     }
     const { localQuantity, handleAddToCart, handleIncrement, handleDecrement } = useQuantity(1, product);
     const [mainImg, setMainImg] = useState(product?.img);

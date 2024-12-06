@@ -2,10 +2,18 @@ import React, { useState, useEffect } from "react";
 import Arrow from "../../img/arrow.svg";
 import "./Nav.scss";
 import { Link, useLocation } from "react-router-dom";
+import useHeaderState from "../../Hooks/useHeaderState";
 
+import Search from "../../img/search.svg";
+import SearchingPlants from "../SearchingPlants/SearchingPlants";
 
 const Nav = ({ active, setMenu }) => {
-
+    const {
+        value,
+        setValue,
+        menu,
+        handleChange,
+    } = useHeaderState();
     const [activeMenu, setActiveMenu] = useState(null);
     const location = useLocation();
     const toggleMenu = (menuName) => {
@@ -14,13 +22,14 @@ const Nav = ({ active, setMenu }) => {
     }
 
     useEffect(() => {
+    
+        if(location.hash === '') return;
+        
         setMenu(false);
         setActiveMenu(null);
-        
+
     }, [location]);
 
-    
-    
 
     return (
         <nav className="nav">
@@ -80,15 +89,19 @@ const Nav = ({ active, setMenu }) => {
                 <li>
                     <a href="#">
                         Essentials
-                        <img src={Arrow} alt="Arrow icon" title="Arrow icon" />
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         Services
-                        <img src={Arrow} alt="Arrow icon" title="Arrow icon" />
                     </a>
                 </li>
+                <div className={`input-container ${menu ? 'active' : ''}`}>
+                    <input value={value} onChange={handleChange} type="text" placeholder='Search' />
+                    <img src={Search} alt="Search" title='Search' />
+
+                    <SearchingPlants setValue={setValue} />
+                </div>
             </ul>
         </nav>
     );
