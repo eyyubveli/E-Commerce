@@ -169,6 +169,7 @@ const Shop = () => {
                                             <p>$ {item.price}</p>
                                             <button
                                                 onClick={(e) => {
+                                                    e.stopPropagation();
                                                     if (!currentUser.user) {
                                                         return toast.error("Log in or sign up");
                                                     }
