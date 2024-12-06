@@ -128,8 +128,6 @@ const Shop = () => {
                     </div>
                     <div className="shop-right">
                         <div className="shop-right-wrapper">
-
-
                             {(value[0] === 0 && value[1] === 380) ? (
                                 concatItems.map(item => (
                                     <div
@@ -143,8 +141,9 @@ const Shop = () => {
                                         <button
                                             onClick={(e) => {
                                                 e.stopPropagation();
+
                                                 if (!currentUser.user) {
-                                                   return toast.error("Log in or sign up");
+                                                    return toast.error("Log in or sign up");
                                                 }
 
                                                 dispatch(addProduct(item));
@@ -170,12 +169,10 @@ const Shop = () => {
                                             <p>$ {item.price}</p>
                                             <button
                                                 onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    if (currentUser) {
-                                                        dispatch(addProduct(item));
-                                                    } else {
-                                                        toast.error("Log in or sign up");
+                                                    if (!currentUser.user) {
+                                                        return toast.error("Log in or sign up");
                                                     }
+                                                    dispatch(addProduct(item));
                                                 }}
                                                 className="trending-btn"
                                                 type="button"
